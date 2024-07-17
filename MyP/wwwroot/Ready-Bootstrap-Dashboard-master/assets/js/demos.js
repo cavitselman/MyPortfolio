@@ -43,7 +43,7 @@ var chart = new Chartist.Line('#trafficChart', {
 
 // salesChart
 var dataSales = {
-	labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	labels: ['Oca', 'Şub', 'Mar', 'Nis', 'May', 'Haz', 'Tem', 'Ağu', 'Eyl', 'Eki', 'Kas', 'Ara'],
 	series: [
 		[5, 4, 3, 7, 5, 10, 3, 4, 8, 10, 6, 8],
 		[3, 2, 9, 5, 4, 6, 4, 6, 7, 8, 7, 4]
@@ -111,7 +111,7 @@ $(".mapcontainer").mapael({
 		// 	tooltip: {content: "<b>Morbihan</b> <br /> Bretagne"}
 		// },
 		"ID": {
-			tooltip: { content: "<b>Indonesia</b> <br /> Tempat Lahir Beta" },
+			tooltip: { content: "<b>Endonezya</b> <br /> Beta'nın Doğduğu Yer" },
 			attrs: {
 				fill: "#59d05d"
 			}
@@ -120,7 +120,25 @@ $(".mapcontainer").mapael({
 			}
 		},
 		"RU": {
-			tooltip: { content: "<b>Russia</b>" },
+			tooltip: { content: "<b>Rusya</b>" },
+			attrs: {
+				fill: "#59d05d"
+			}
+			, attrsHover: {
+				fill: "#59d05d"
+			}
+		},
+		"TR": {
+			tooltip: { content: "<b>Türkiye</b>" },
+			attrs: {
+				fill: "#FF4C4C"
+			}
+			, attrsHover: {
+				fill: "#FF4C4C"
+			}
+		},
+		"DE": {
+			tooltip: { content: "<b>Almanya</b>" },
 			attrs: {
 				fill: "#59d05d"
 			}
@@ -129,7 +147,7 @@ $(".mapcontainer").mapael({
 			}
 		},
 		"US": {
-			tooltip: { content: "<b>United State</b>" },
+			tooltip: { content: "<b>Birleşik Devlet</b>" },
 			attrs: {
 				fill: "#59d05d"
 			}
@@ -138,7 +156,7 @@ $(".mapcontainer").mapael({
 			}
 		},
 		"AU": {
-			tooltip: { content: "<b>Australia</b>" },
+			tooltip: { content: "<b>Avustralya</b>" },
 			attrs: {
 				fill: "#59d05d"
 			}

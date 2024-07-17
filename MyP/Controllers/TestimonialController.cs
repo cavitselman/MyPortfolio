@@ -2,7 +2,7 @@
 
 namespace MyP.Controllers
 {
-    public class LayoutController : Controller
+    public class TestimonialController : Controller
     {
         public IActionResult Index()
         {
