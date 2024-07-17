@@ -1,6 +1,10 @@
+using MyP.BL.Container;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.ContainerDependencies();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

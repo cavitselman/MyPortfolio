@@ -1,17 +1,16 @@
-﻿
-@{
-    Layout = null;
+﻿@{
+	Layout = null;
 }
 
 <!DOCTYPE html>
 <html>
-@await Component.InvokeAsync("_LayoutHeadComponentPartial")
+@await Component.InvokeAsync("_AdminLayoutHeadComponentPartial")
 <body>
 	<div class="wrapper">
-		@await Component.InvokeAsync("_LayoutNavbarComponentPartial")
+		@await Component.InvokeAsync("_AdminLayoutNavbarComponentPartial")
 
-		@await Component.InvokeAsync("_LayoutSidebarComponentPartial")
-		
+		@await Component.InvokeAsync("_AdminLayoutSidebarComponentPartial")
+
 		<div class="main-panel">
 
 			@RenderBody()
@@ -45,5 +44,5 @@
 		</div>
 	</div>
 </body>
-@await Component.InvokeAsync("_LayoutScriptComponentPartial")
+@await Component.InvokeAsync("_AdminLayoutScriptComponentPartial")
 </html>

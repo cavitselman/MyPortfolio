@@ -2,7 +2,7 @@
 
 namespace MyP.ViewComponents.LayoutViewComponents
 {
-	public class _LayoutNavbarComponentPartial:ViewComponent
+	public class _AdminLayoutHeadComponentPartial:ViewComponent
 	{
 		public IViewComponentResult Invoke()
 		{
