@@ -1,0 +1,61 @@
+﻿@model List<Portfolio>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <h4 class="page-title">Portföyüm</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Portföy Listesi</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-sub">
+                            Portföy ile ilgili işlemleri aşağıdaki panelden yapabilirsiniz.
+                        </div>
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Başlık</th>
+                                    <th scope="col">Alt Başlık</th>
+                                    <th scope="col">Detaylar</th>
+                                    <th scope="col">Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.Title</td>
+                                        <td>@item.SubTitle</td>
+                                        <td>
+                                            @{
+                                                if (item.Description.Length > 25)
+                                                {
+                                                    @item.Description.Substring(0, 25) <text>...</text>
+                                                }
+                                                else
+                                                {
+                                                    @item.Description
+                                                }
+                                            }
+                                        </td>
+                                        <td><a href="/Portfolio/UpdatePortfolio/@item.PortfolioId" class="btn btn-success">Güncelle</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-/*!
+﻿/*!
 
  =========================================================
  * Ready Bootstrap Dashboard (Bootstrap 4)
@@ -2254,13 +2254,34 @@ body {
 }
 
 .footer {
-  border-top: 1px solid #eee;
-  padding: 15px;
-  background: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+    z-index: 1000; /* Diğer içeriklerden üstte olacak şekilde bir z-index değeri */
 }
+
 .footer .container-fluid {
-  display: flex;
-  align-items: center;
+    display: flex;
+    justify-content: space-between; /* İçeriği sağa ve sola yaslamak için */
+    align-items: center; /* İçeriği dikeyde ortalamak için */
+}
+
+.footer .container-fluid nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer .container-fluid nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer .copyright {
+    margin-right: 260px; /* Sağa yaslamak için */
 }
 
 .la, .la-stack {

@@ -14,7 +14,7 @@ namespace MyP.Controllers
 			_skillService = skillService;
 		}
 
-		public IActionResult Index()
+		public IActionResult SkillList()
 		{
 			var values = _skillService.TGetList();
 			return View(values);
