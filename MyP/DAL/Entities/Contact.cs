@@ -1,7 +1,10 @@
-﻿namespace MyP.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyP.DAL.Entities
 {
     public class Contact
     {
+        [Key]
         public int ContactId { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

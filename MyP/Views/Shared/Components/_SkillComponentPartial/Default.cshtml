@@ -3,10 +3,13 @@
     <h3>Programlama Dilleri & Teknolojiler</h3>
 
     <ul class="skill-bars">
-        @foreach(var item in Model)
+        @foreach (var item in Model)
         {
+            // Progress bar için dinamik sınıf oluşturma
+            string progressBarClass = $"progress percent{item.Value}";
+
             <li>
-                <div class="progress percent90"><span>@item.Value%</span></div>
+                <div class="@progressBarClass"><span>@item.Value%</span></div>
                 <strong>@item.Title</strong>
             </li>
         }

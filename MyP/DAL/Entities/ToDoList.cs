@@ -1,7 +1,10 @@
-﻿namespace MyP.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyP.DAL.Entities
 {
 	public class ToDoList
 	{
+        [Key]
         public int ToDoListId { get; set; }
         public string Title { get; set; }
         public string ImageUrl { get; set; }

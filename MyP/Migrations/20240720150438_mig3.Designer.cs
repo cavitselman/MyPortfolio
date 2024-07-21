@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyP.DAL.Context;
 
@@ -11,9 +12,11 @@ using MyP.DAL.Context;
 namespace MyP.Migrations
 {
     [DbContext(typeof(MyPContext))]
-    partial class MyPContextModelSnapshot : ModelSnapshot
+    [Migration("20240720150438_mig3")]
+    partial class mig3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,14 +61,11 @@ namespace MyP.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MessageId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ReceiverEmail")
+                    b.Property<string>("Reply")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Reply")
+                    b.Property<string>("Sender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -74,8 +74,6 @@ namespace MyP.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MessageId");
 
                     b.ToTable("AdminReplys");
                 });
@@ -339,22 +337,6 @@ namespace MyP.Migrations
                     b.HasKey("ToDoListId");
 
                     b.ToTable("ToDoLists");
-                });
-
-            modelBuilder.Entity("MyP.DAL.Entities.AdminReply", b =>
-                {
-                    b.HasOne("MyP.DAL.Entities.Message", "Message")
-                        .WithMany("AdminReplys")
-                        .HasForeignKey("MessageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Message");
-                });
-
-            modelBuilder.Entity("MyP.DAL.Entities.Message", b =>
-                {
-                    b.Navigation("AdminReplys");
                 });
 #pragma warning restore 612, 618
         }

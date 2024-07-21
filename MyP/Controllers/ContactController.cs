@@ -24,7 +24,7 @@ namespace MyP.Controllers
         public IActionResult UpdateContact(Contact contact)
         {
             _contactService.TUpdate(contact);
-            return RedirectToAction("Index");
+            return Redirect("/Default/Index#contact");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyP.BL.Abstract;
 using MyP.DAL.Entities;
+using NuGet.Protocol.Plugins;
 
 namespace MyP.Controllers
 {
@@ -24,7 +25,7 @@ namespace MyP.Controllers
 		public IActionResult UpdateFeature(Feature feature)
 		{
 			_featureService.TUpdate(feature);
-			return RedirectToAction("Index");
+			return Redirect("/Default/Index#home");
 		}
 	}
 }

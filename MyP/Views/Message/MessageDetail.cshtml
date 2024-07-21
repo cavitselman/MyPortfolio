@@ -1,34 +1,61 @@
 ﻿@model Message
 @{
     ViewData["Title"] = "MessageDetail";
-	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<input type="hidden" asp-for=MessageId />
+<input type="hidden" asp-for="MessageId" />
 
 <div class="content">
-	<div class="container-fluid">
-		<h4 class="page-title">Mesajlar</h4>
-		<div class="row">
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-header">
-						<div class="card-title">Mesaj Detayları</div>
-					</div>
-					<div class="card-body">
-						<div class="card-sub">
-							<b>Gönderen:</b> @Model.NameSurname
-							<br />
-							<b>Email:</b> @Model.Email
-							<br />
-							<b>Tarih:</b> @Model.SendDate
-							<br /><br />
-							<b>Mesaj:</b> @Model.MessageDetail
-						</div>
+    <div class="container-fluid">
+        <h4 class="page-title">Mesaj Detayları</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-sub">
+                            <b>Gönderen:</b> @Model.NameSurname
+                            <br />
+                            <b>Email:</b> @Model.Email
+                            <br />
+                            <b>Tarih:</b> @Model.SendDate
+                            <br /><br />
+                            <b>Mesaj:</b> @Model.MessageDetail
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Admin cevaplarını burada listeleyin -->
+                        @if (Model.AdminReplys != null && Model.AdminReplys.Any())
+                        {
+                            <h5>Cevaplar:</h5>
+                            <ul>
+                                @foreach (var reply in Model.AdminReplys)
+                                {
+                                    <li>
+                                        <b>Gönderen:</b> @reply.SenderEmail
+                                        <br />
+                                        <b>Tarih:</b> @reply.Date.ToString("dd-MM-yyyy HH:mm")
+                                        <br />
+                                        <b>Cevap:</b> @reply.Reply
+                                    </li>
+                                    <br />
+                                }
+                            </ul>
+                        }
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <!-- Cevap gönderme formu -->
+                        <form asp-controller="Message" asp-action="SendReply" method="post">
+                            <input type="hidden" asp-for="MessageId" />
+                            <input type="hidden" asp-for="Email" /> <!-- Alıcı Email'i hidden olarak gönderiyoruz -->
+                            <div class="form-group">
+                                <label for="ReplyContent">Cevabınızı Girin:</label>
+                                <textarea class="form-control" id="ReplyContent" name="ReplyContent" rows="4" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Cevap Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

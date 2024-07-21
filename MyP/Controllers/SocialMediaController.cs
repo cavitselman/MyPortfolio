@@ -27,14 +27,14 @@ namespace MyP.Controllers
 		public IActionResult CreateSocialMedia(SocialMedia socialMedia)
 		{
 			_socialMediaService.TAdd(socialMedia);
-			return RedirectToAction("Index");
+			return RedirectToAction("SocialMediaList");
 		}
 
 		public IActionResult DeleteSocialMedia(int id)
 		{
 			var values = _socialMediaService.TGetByID(id);
 			_socialMediaService.TDelete(values);
-			return RedirectToAction("Index");
+			return RedirectToAction("SocialMediaList");
 		}
 
 		[HttpGet]
@@ -48,7 +48,7 @@ namespace MyP.Controllers
         public IActionResult UpdateSocialMedia(SocialMedia socialMedia)
         {
             _socialMediaService.TUpdate(socialMedia);
-            return RedirectToAction("Index");
+            return Redirect("/Default/Index#contact");
         }
     }
 }

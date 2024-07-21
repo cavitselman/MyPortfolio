@@ -50,7 +50,7 @@ namespace MyP.Controllers
 		public IActionResult UpdateSkill(Skill skill)
 		{
 			_skillService.TUpdate(skill);
-			return RedirectToAction("Index");
-		}
+            return Redirect("/Default/Index#about");
+        }
 	}
 }

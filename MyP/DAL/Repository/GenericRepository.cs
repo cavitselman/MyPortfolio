@@ -1,5 +1,7 @@
-﻿using MyP.DAL.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using MyP.DAL.Abstract;
 using MyP.DAL.Context;
+using MyP.DAL.Entities;
 using System.Linq.Expressions;
 
 namespace MyP.DAL.Repository
@@ -44,5 +46,5 @@ namespace MyP.DAL.Repository
 			c.Update(t);
 			c.SaveChanges();
 		}
-	}
+    }
 }

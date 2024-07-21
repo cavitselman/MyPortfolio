@@ -24,7 +24,7 @@ namespace MyP.Controllers
 		public IActionResult UpdateAbout(About about)
 		{
 			_aboutService.TUpdate(about);
-			return RedirectToAction("Index");
-		}
+            return Redirect("/Default/Index#about");
+        }
 	}
 }

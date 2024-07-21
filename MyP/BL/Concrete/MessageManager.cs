@@ -8,12 +8,12 @@ namespace MyP.BL.Concrete
 	{
 		IMessageDal _messageDal;
 
-		public MessageManager(IMessageDal messageDal)
-		{
-			_messageDal = messageDal;
-		}
+        public MessageManager(IMessageDal messageDal)
+        {
+            _messageDal = messageDal;
+        }
 
-		public void TAdd(Message t)
+        public void TAdd(Message t)
 		{
 			_messageDal.Insert(t);
 		}
@@ -37,5 +37,5 @@ namespace MyP.BL.Concrete
 		{
 			_messageDal.Update(t);
 		}
-	}
+    }
 }

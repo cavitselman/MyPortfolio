@@ -1,7 +1,10 @@
-﻿namespace MyP.DAL.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MyP.DAL.Entities
 {
     public class Portfolio
     {
+        [Key]
         public int PortfolioId { get; set; }
         public string Title { get; set; }
         public string SubTitle { get; set; }

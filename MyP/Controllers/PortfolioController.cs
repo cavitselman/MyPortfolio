@@ -29,7 +29,7 @@ namespace MyP.Controllers
         public IActionResult UpdatePortfolio(Portfolio portfolio)
         {
             _portfolioService.TUpdate(portfolio);
-            return RedirectToAction("Index");
+            return Redirect("/Default/Index#works");
         }
     }
 }

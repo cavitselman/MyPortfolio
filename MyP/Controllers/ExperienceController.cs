@@ -49,8 +49,8 @@ namespace MyP.Controllers
         [HttpPost]
         public IActionResult UpdateExperience(Experience experience)
         {
-            _experienceService.TUpdate(experience);            
-			return RedirectToAction("ExperienceList");
-		}
+            _experienceService.TUpdate(experience);
+            return Redirect("/Default/Index#about");
+        }
     }
 }

@@ -1,4 +1,4 @@
-/* ===================================================================
+﻿/* ===================================================================
  * Hola - Main JS
  *
  * ------------------------------------------------------------------- */
@@ -376,7 +376,7 @@
                     error: function() {
     
                         sLoader.slideUp("slow"); 
-                        $('.message-warning').html("Something went wrong. Please try again.");
+                        $('.message-warning').html("Bir şeyler yanlış gitti. Lütfen tekrar deneyin.");
                         $('.message-warning').slideDown("slow");
     
                     }

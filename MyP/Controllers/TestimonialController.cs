@@ -28,14 +28,14 @@ namespace MyP.Controllers
 		public IActionResult CreateTestimonial(Testimonial testimonial)
 		{
 			_testimonialService.TAdd(testimonial);
-			return RedirectToAction("Index");
+			return RedirectToAction("TestimonialList");
 		}
 
 		public IActionResult DeleteTestimonial(int id)
 		{
 			var values = _testimonialService.TGetByID(id);
 			_testimonialService.TDelete(values);
-			return RedirectToAction("Index");
+			return RedirectToAction("TestimonialList");
 		}
 
 		[HttpGet]
@@ -49,7 +49,7 @@ namespace MyP.Controllers
 		public IActionResult UpdateTestimonial(Testimonial testimonial)
 		{
 			_testimonialService.TUpdate(testimonial);
-			return RedirectToAction("Index");
+			return Redirect("/Default/Index#blog");
 		}
 	}
 }

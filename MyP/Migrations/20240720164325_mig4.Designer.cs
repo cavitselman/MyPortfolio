@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyP.DAL.Context;
 
@@ -11,9 +12,11 @@ using MyP.DAL.Context;
 namespace MyP.Migrations
 {
     [DbContext(typeof(MyPContext))]
-    partial class MyPContextModelSnapshot : ModelSnapshot
+    [Migration("20240720164325_mig4")]
+    partial class mig4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
