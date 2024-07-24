@@ -36,6 +36,7 @@ namespace MyP.Controllers
 		{
 			var value = _messageService.TGetByID(id);
 			value.IsRead = true;
+			_messageService.TUpdate(value);
 			return RedirectToAction("Inbox");
 		}
 
@@ -43,6 +44,7 @@ namespace MyP.Controllers
 		{
 			var value = _messageService.TGetByID(id);
 			value.IsRead = false;
+			_messageService.TUpdate(value);
 			return RedirectToAction("Inbox");
 		}
 

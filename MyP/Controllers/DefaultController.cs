@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MyP.Controllers
 {
+    [AllowAnonymous]
     public class DefaultController : Controller
     {
-
         private readonly IWebHostEnvironment _env;
 
         public DefaultController(IWebHostEnvironment env)
