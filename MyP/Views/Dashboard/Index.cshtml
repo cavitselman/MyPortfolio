@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ToDoList>
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
@@ -300,92 +301,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input task-select" type="checkbox">
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input task-select" type="checkbox" @(item.Status ? "checked" : "")>
                                                     <span class="form-check-sign"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>Yeni proje yapısının planlanması</td>
-                                        <td class="td-actions text-right">
-                                            <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                                    <i class="la la-edit"></i>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                                    <i class="la la-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input task-select" type="checkbox">
-                                                    <span class="form-check-sign"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>Yazı tiplerini güncelle</td>
-                                        <td class="td-actions text-right">
-                                            <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                                    <i class="la la-edit"></i>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                                    <i class="la la-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input task-select" type="checkbox">
-                                                    <span class="form-check-sign"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            Yeni gönderi ekle
-                                        </td>
-                                        <td class="td-actions text-right">
-                                            <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                                    <i class="la la-edit"></i>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                                    <i class="la la-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input task-select" type="checkbox">
-                                                    <span class="form-check-sign"></span>
-                                                </label>
-                                            </div>
-                                        </td>
-                                        <td>Tasarım teklifini sonuçlandırın</td>
-                                        <td class="td-actions text-right">
-                                            <div class="form-button-action">
-                                                <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link <btn-simple-primary">
-                                                    <i class="la la-edit"></i>
-                                                </button>
-                                                <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
-                                                    <i class="la la-times"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                                </div>
+                                            </td>
+                                            <td>@item.Title</td>
+                                            <td class="td-actions text-right">
+                                                <div class="form-button-action">
+                                                    <button type="button" data-toggle="tooltip" title="Edit Task" class="btn btn-link btn-simple-primary">
+                                                        <i class="la la-edit"></i>
+                                                    </button>
+                                                    <button type="button" data-toggle="tooltip" title="Remove" class="btn btn-link btn-simple-danger">
+                                                        <i class="la la-times"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>

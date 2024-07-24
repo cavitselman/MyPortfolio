@@ -17,6 +17,16 @@ namespace MyP.Controllers
             _messageService = messageService;
         }
 
+        public IActionResult ReplyMessage(int messageId)
+        {
+            MyPContext c = new MyPContext();
+            ViewBag.v1 = c.AdminReplys.Where(x => x.Id == messageId).ToList();
+            ViewBag.v2 = c.AdminReplys.Select(x => x.Reply.ToList());
+            ViewBag.v3 = c.AdminReplys.Select(x => x.Date).ToList();
+            ViewBag.v4 = c.AdminReplys.Select(x => x.SenderEmail).ToList();
+            return View(messageId);
+        }
+
         public IActionResult Inbox()
 		{
 			var values = _messageService.TGetList();
@@ -46,7 +56,20 @@ namespace MyP.Controllers
 		public IActionResult MessageDetail(int id)
 		{
 			var value = _messageService.TGetByID(id);
-			return View(value);
+            using (var context = new MyPContext())
+            {
+                var sender = context.AdminReplys.Where(x => x.MessageId == id).Select(x => x.SenderEmail).FirstOrDefault();
+                // Belirli bir id'ye sahip AdminReplys kaydının Reply özelliğini alıyoruz
+                var reply = context.AdminReplys.Where(x => x.MessageId == id).Select(x => x.Reply).ToList();
+
+                var replyDates = context.AdminReplys.Where(x => x.MessageId == id).OrderBy(x => x.Date).Select(x => x.Date).FirstOrDefault();
+
+                // ViewBag.reply: Belirli id'ye sahip AdminReplys kaydının Reply özelliğini view'e aktarıyoruz
+                ViewBag.reply = reply;
+                ViewBag.date = replyDates;
+                ViewBag.sender = sender;
+            }
+            return View(value);
 		}
 
         [HttpPost]
@@ -56,7 +79,7 @@ namespace MyP.Controllers
             message.IsRead = false;
             _messageService.TAdd(message);
             return Redirect("/Default/Index#contact");
-        }
+        }        
 
         [HttpPost]
         public IActionResult SendReply(int messageId, string replyContent)
@@ -75,7 +98,7 @@ namespace MyP.Controllers
                 var adminReply = new AdminReply
                 {
                     MessageId = messageId,
-                    SenderEmail = "myportfolio@gmail.com", // Adminin e-posta adresi buraya gelmeli
+                    SenderEmail = "myportfolio@website.com", // Adminin e-posta adresi buraya gelmeli
                     ReceiverEmail = message.Email, // Alıcı emaili Message modelinden al
                     Date = DateTime.Now,
                     Reply = replyContent

@@ -6,7 +6,11 @@
             <h3>Portfolyo</h3>
             <h1>Son Projelerime Göz Atabilirsiniz</h1>
 
-            <p class="lead">Lorem ipsum Dolor adipisicing nostrud et aute Excepteur amet commodo ea dolore irure esse Duis nulla sint fugiat cillum ullamco proident aliquip quis qui voluptate dolore veniam Ut laborum non est in officia.</p>
+            <p class="lead">
+                Merhaba! Burada benim son çalışmalarımdan bazı örnekleri bulabilirsiniz. Tasarım ve geliştirme süreçlerimde yer alan projelerimi sizinle paylaşmak istedim. Her biri, benim için özel olan ve benim becerilerimi ve yeteneklerimi nasıl kullandığımı gösteren örneklerdir.
+
+                Projelerim hakkında daha fazla detayı görmek için aşağıdaki bağlantılardan ilgilendiğiniz projeyi seçebilirsiniz. Herhangi bir sorunuz veya geri bildiriminiz varsa, lütfen bana ulaşmaktan çekinmeyin.
+            </p>
         </div>
     </div>
 
@@ -18,7 +22,7 @@
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="~/hola-master/images/portfolio/gallery/g-beetle.jpg" class="thumb-link" title="The Beetle Car" data-size="1050x700">
+                        <a href="@item.Url" class="thumb-link" title="The Image" data-size="1050x700">
                             <img src="@item.ImageUrl+.jpg"
                                      srcset="@($"{item.ImageUrl}.jpg 1x, {item.ImageUrl}@2x.jpg 2x")" alt="">
                             <span class="shadow-overlay"></span>

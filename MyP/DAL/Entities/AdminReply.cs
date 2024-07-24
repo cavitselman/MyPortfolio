@@ -7,15 +7,11 @@ namespace MyP.DAL.Entities
     {
         [Key]
         public int Id { get; set; }
-
-        public int MessageId { get; set; } // Dış anahtar, Message ile ilişkili olan MessageId
+        public int MessageId { get; set; } // Dış anahtar, Message ile ilişkili olan
         public string SenderEmail { get; set; }
         public string ReceiverEmail { get; set; } // Alıcı e-posta adresi
-
         public DateTime Date { get; set; }
-
         public string Reply { get; set; }
-
         // Message ile ilişkiyi tanımlamak için navigasyon özelliği
         [ForeignKey("MessageId")]
         public Message Message { get; set; }

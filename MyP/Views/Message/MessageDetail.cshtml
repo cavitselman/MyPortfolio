@@ -24,36 +24,31 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <!-- Admin cevaplarını burada listeleyin -->
-                        @if (Model.AdminReplys != null && Model.AdminReplys.Any())
-                        {
-                            <h5>Cevaplar:</h5>
-                            <ul>
-                                @foreach (var reply in Model.AdminReplys)
-                                {
-                                    <li>
-                                        <b>Gönderen:</b> @reply.SenderEmail
-                                        <br />
-                                        <b>Tarih:</b> @reply.Date.ToString("dd-MM-yyyy HH:mm")
-                                        <br />
-                                        <b>Cevap:</b> @reply.Reply
-                                    </li>
-                                    <br />
-                                }
-                            </ul>
-                        }
-
-                        <!-- Cevap gönderme formu -->
-                        <form asp-controller="Message" asp-action="SendReply" method="post">
-                            <input type="hidden" asp-for="MessageId" />
-                            <input type="hidden" asp-for="Email" /> <!-- Alıcı Email'i hidden olarak gönderiyoruz -->
-                            <div class="form-group">
-                                <label for="ReplyContent">Cevabınızı Girin:</label>
-                                <textarea class="form-control" id="ReplyContent" name="ReplyContent" rows="4" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Cevap Gönder</button>
-                        </form>
+                        <div class="card-sub">
+                            <h6>Cevabınız</h6>
+                            <b>Gönderen:</b> @ViewBag.sender
+                            <br />
+                            <b>Tarih:</b>  @ViewBag.date
+                            <br />
+                            @foreach (var reply in ViewBag.reply)
+                            {
+                                <div>
+                                    <b>Cevap:</b> @reply <br />
+                                </div>
+                            }
+                        </div>
                     </div>
+                    <!-- Cevap gönderme formu -->
+                    <form asp-controller="Message" asp-action="SendReply" method="post">
+                        <input type="hidden" asp-for="MessageId" />
+                        <input type="hidden" asp-for="Email" /> <!-- Alıcı Email'i hidden olarak gönderiyoruz -->
+                        <div class="form-group">
+                            <label for="ReplyContent">Cevabınızı Girin:</label>
+                            <textarea class="form-control" id="ReplyContent" name="ReplyContent" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="position:relative; left:12px;">Cevap Gönder</button>
+                        <br /><br />
+                    </form>
                 </div>
             </div>
         </div>

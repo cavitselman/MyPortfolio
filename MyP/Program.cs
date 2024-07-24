@@ -1,4 +1,6 @@
 using MyP.BL.Container;
+using MyP.DAL.Context;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
