@@ -1,7 +1,8 @@
 ﻿@model List<Message>
 @{
-    ViewData["Title"] = "Inbox";
+	ViewData["Title"] = "Inbox";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	int count = 0;
 }
 
 <div class="content">
@@ -32,8 +33,9 @@
 							<tbody>
 								@foreach (var item in Model)
 								{
+									count++;
 									<tr>
-										<td>@item.MessageId</td>
+										<td>@count</td>
 										<td>@item.NameSurname</td>
 										<td>@item.Subject</td>
 										<td>@item.SendDate.ToShortDateString()</td>
