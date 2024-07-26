@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MyP.DAL.Context;
 using MyP.DAL.Entities;
 using MyP.Models;
-using System.ComponentModel.DataAnnotations;
 
 namespace MyP.Controllers
 {
@@ -29,21 +29,46 @@ namespace MyP.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Index(UserEditViewModel p)
 		{
+			MyPContext context = new MyPContext();
 			var user = await _userManager.FindByNameAsync(User.Identity.Name);
+
+			if (user == null)
+			{
+				return NotFound("Kullanıcı bulunamadı.");
+			}
+
 			if (p.Picture != null)
 			{
-				var resource = Directory.GetCurrentDirectory();
 				var extension = Path.GetExtension(p.Picture.FileName);
-				var imagename = Guid.NewGuid() + extension;
-				var savelocation = resource + "/wwwroot/userimage/" + imagename;
-				var stream = new FileStream(savelocation, FileMode.Create);
-				await p.Picture.CopyToAsync(stream);
-				user.ImageUrl = imagename;
+				var imagename = Guid.NewGuid().ToString() + extension;
+				var relativePath = "/userimage/" + imagename; // Resmin relative yolu
+
+				var savelocation = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "userimage", imagename);
+
+				using (var stream = new FileStream(savelocation, FileMode.Create))
+				{
+					await p.Picture.CopyToAsync(stream);
+				}
+
+				// Kullanıcının profil resim yolunu güncelle
+				user.ImageUrl = relativePath;
+
+				// Kullanıcıyı güncelleme
+				var result = await _userManager.UpdateAsync(user);
+				if (!result.Succeeded)
+				{
+					ModelState.AddModelError(string.Empty, "Profil resmi güncellenirken bir hata oluştu.");
+					// Hata durumunda gerekli işlemleri yapabilirsiniz.
+				}
+
+				// Veritabanındaki değişiklikleri kaydet
+				await context.SaveChangesAsync();
 			}
 			else
 			{
 				ModelState.AddModelError(string.Empty, "Lütfen bir resim seçin.");
 			}
+
 			return View();
 		}
 
@@ -62,7 +87,7 @@ namespace MyP.Controllers
 			var result = await _userManager.UpdateAsync(user);
 			if (result.Succeeded)
 			{
-				return RedirectToAction("Index", "Login");
+				return RedirectToAction("SignIn", "Login");
 			}
 			else
 			{

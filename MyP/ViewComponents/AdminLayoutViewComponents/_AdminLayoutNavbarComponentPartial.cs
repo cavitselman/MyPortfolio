@@ -8,6 +8,7 @@ namespace MyP.ViewComponents.LayoutViewComponents
 		MyPContext context = new MyPContext();
 		public IViewComponentResult Invoke()
 		{
+			ViewBag.Image = context.Users.FirstOrDefault()?.ImageUrl;
 			ViewBag.toDoListCount = context.ToDoLists.Where(x => x.Status == false).Count();
 			var values = context.ToDoLists.Where(x => x.Status == false).ToList();
 			return View(values);
