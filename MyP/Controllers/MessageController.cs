@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyP.BL.Abstract;
 using MyP.BL.Concrete;
@@ -7,7 +8,7 @@ using MyP.DAL.Entities;
 using MyP.Models;
 
 namespace MyP.Controllers
-{	
+{    
 	public class MessageController : Controller
 	{
 		private readonly IMessageService _messageService;
@@ -74,7 +75,8 @@ namespace MyP.Controllers
             return View(value);
 		}
 
-        [HttpPost]
+		[AllowAnonymous]
+		[HttpPost]
         public IActionResult SendMessage(Message message)
         {
             message.SendDate = DateTime.Now.ToLocalTime();
