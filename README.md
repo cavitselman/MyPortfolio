@@ -16,3 +16,15 @@ Kullanıcının kendi adına oluşturabileceği portföy ve cv indirme projesi. 
 ## Kullanılan Tasarım Desenleri
 
 - Repository
+
+![](readme/1.jpg)
+![](readme/2.jpg)
+![](readme/3.jpg)
+![](readme/4.jpg)
+![](readme/5.jpg)
+![](readme/6.jpg)
+![](readme/7.jpg)
+![](readme/8.jpg)
+![](readme/9.jpg)
+![](readme/10.jpg)
+![](readme/11.jpg)
