@@ -1,21 +1,30 @@
-## Portföyüm
+<h1 align="center">Portföyüm</h1>
 
-Kullanıcının kendi adına oluşturabileceği portföy ve cv indirme projesi. Vitrin kısmında görüntülenmek üzere veriler veri tabanından dinamik olarak çekilmektedir. Proje içeriğinde çeşitli yetenek yönetimini sağlayan temel CRUD (Create, Read, Update, Delete) işlemleri kullanılmaktadır. Admin panelinde projenin her kısmı düzenlenebilmektedir. İletişim kısmında kaydı olmayan misafirler mail ile mesaj gönderebilmekte ve mesajları admin panelinde cevaplanabilmektedir. Profil kısmında profil fotoğrafı ve şifre güncellenebilmektedir. 
+Bu proje, kullanıcıların kendi adına oluşturabileceği bir portföy ve CV indirme projesidir. Vitrin kısmında görüntülenmek üzere veriler veritabanından dinamik olarak çekilmektedir. Proje, temel CRUD (Create, Read, Update, Delete) işlemleri ile yetenek yönetimini sağlamaktadır. Admin panelinde projenin her kısmı düzenlenebilir. 
 
-## Kullanılan Framework Sürümü
+İletişim kısmında, kaydı olmayan misafirler e-posta ile mesaj gönderebilir ve bu mesajlar admin panelinde yanıtlanabilir. Kullanıcılar, profil kısmında profil fotoğraflarını ve şifrelerini güncelleyebilirler.
 
-- Entity Framework 8.0
+<h2>Kullanılan Teknolojiler</h2>
 
-## Kullanılan Teknolojiler
+### Framework
+- **Entity Framework 8.0**
 
-- MSSQL
-- Identity
-- HTML / CSS
-- JavaScript
+### Veritabanı
+- **MSSQL**
 
-## Kullanılan Tasarım Desenleri
+### Web Teknolojileri
+- **HTML / CSS**
+- **JavaScript**
 
-- Repository
+### Kimlik Yönetimi
+- **Identity**
+
+<h2>Kullanılan Tasarım Desenleri</h2>
+<ul>
+    <li><strong>Repository Pattern</strong></li>
+</ul>
+
+<h2>Proje Görselleri</h2>
 
 ![](readme/1.jpg)
 ![](readme/2.jpg)
